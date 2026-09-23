@@ -47,6 +47,13 @@ class student
     } 
 
 public:
+    //-생성자constructor: 모든 멤버변수 초기화, 기본값 설정, test 함수들 호출
+    student(int d = 1234567, int s = 0, char g = 'F')
+        :id{d}, score{s}, grade{g} //멤버초기화리스트
+    {
+        testId(); testScore(); testGrade();
+    }
+
     void input(){
         std::cout << "Enter your id: ";
         std::cin >> id; testId();
@@ -58,10 +65,12 @@ public:
     void setId(int d){id = d; testId();}
     void setScore(int s){score = s; testScore();}
     void setGrade(char g){grade = g; testGrade();}
-    void print(){std::cout << id << ", " << score << ", " << grade << std::endl;}
-    int getId(){return id;}
-    int getScore(){return score;}
-    char getGrade(){return grade;}
+    
+    //const 멤버함수로 변경
+    void print() const {std::cout << id << ", " << score << ", " << grade << std::endl;}
+    int getId() const {return id;}
+    int getScore() const {return score;}
+    char getGrade() const {return grade;}
 };
 
 }
